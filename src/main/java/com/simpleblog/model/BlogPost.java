@@ -15,7 +15,6 @@
  */
 package com.simpleblog.model;
 
-import com.simpleblog.Comment;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -25,13 +24,23 @@ import java.util.Date;
  */
 public class BlogPost {
     
+    private String title;
     private String text;
     private Person author;
     private Date date = new Date();
     private ArrayList<Comment> comments = new ArrayList<Comment>();
 
-    public BlogPost(String text){
+    public BlogPost(String title, String text){
+        this.title = title;
         this.text = text;
+    }
+    
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
     
     public String getText() {
@@ -64,5 +73,9 @@ public class BlogPost {
 
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
+    }
+    
+    public String toString(){
+        return this.text;
     }
 }

@@ -1,26 +1,45 @@
 /*
  * Copyright 2013 craigjones.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
  */
 package com.simpleblog.templates.blogpost;
+
+import com.simpleblog.model.BlogPost;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.IModel;
 
 /**
  *
  * @author craigjones
  */
-public class BlogPostPanel {
+public class BlogPostPanel extends Panel {
+
+    /**
+     * Adds a basic blog view panel
+     * @param id
+     * @param model 
+     */
+    public BlogPostPanel(String id, IModel<BlogPost> model) {
+        super(id, model);
+        this.populateData(model);
+    }
     
-    // todo
+    /**
+     * Populate Data
+     * @param model 
+     */
+    private void populateData(IModel<BlogPost> model){
+        
+        BlogPost post = model.getObject();
+        
+        // Post Title
+        add(new Label("post-title", post.getTitle()));
+        // Post Text
+        //add(new Label("post-text", post.getText()));
+        // Author Name
+        add(new Label("post-author", post.getAuthor().getName()));
+        
+    }
     
 }

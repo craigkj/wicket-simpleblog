@@ -15,10 +15,15 @@
  */
 package com.simpleblog.templates.blogpost;
 
+import org.apache.wicket.markup.html.WebPage;
+
 /**
  *
  * @author craigjones
  */
-public class BlogPostPage {
+public class BlogPostPage extends WebPage {
+    
+    
+    
     
 }

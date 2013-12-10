@@ -16,6 +16,7 @@
 package com.simpleblog.factory;
 
 import com.simpleblog.model.BlogPost;
+import com.simpleblog.model.Person;
 import java.util.ArrayList;
 
 /**
@@ -31,25 +32,41 @@ public class BlogPostFactory {
      * @return 
      */
     public BlogPost createSimpleBlogPost(String text){
-        BlogPost post = new BlogPost(text);
+        BlogPost post = new BlogPost("Title",text);
+        post.setAuthor(createExamplePerson("Craig J"));
         return post;
     }
     
     public ArrayList<BlogPost> createListOfBlogs(int numberOfBlogs){
+         // Bit messy, but makes things easy
+        if(numberOfBlogs >3){
+            numberOfBlogs = 3;
+        }
+        
+        ArrayList<String> names = new ArrayList<String>();
+        names.add("Craig J");
+        names.add("Brian S");
+        names.add("Mark R");
         
         ArrayList<BlogPost> posts = new ArrayList();
         
         for(int i = 0; i < numberOfBlogs ; i++){
-            posts.add(new BlogPost("Blog Post " + i));
+            BlogPost post = new BlogPost("Blog Title " + i,"Blog Post " + i);
+            post.setAuthor(createExamplePerson(names.get(i)));
+            posts.add(post);
         }
+        
         return posts;
     }
     
     public void addSomeCommentsToMyBlog(BlogPost post){
-        
         // todo
     }
     
-    
+    public Person createExamplePerson(String name){
+        Person person = new Person(name);
+        
+        return person;
+    }
     
 }

@@ -1,4 +1,4 @@
-package com.simpleblog;
+package com.simpleblog.model;
 
 import java.util.Date;  
 import org.apache.wicket.util.io.IClusterable;
